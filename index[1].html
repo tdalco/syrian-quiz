@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Syrian Political Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Syrian Political Quiz</h1>
+
+  <form id="quiz-form">
+    <div class="question">
+      <label>How strict should modest attire enforcement be?</label><br>
+      <select name="religion1">
+        <option value="-2">Only basic modesty (e.g., no shorts)</option>
+        <option value="-1">Encourage hijab, don't enforce</option>
+        <option value="1">Enforce hijab for Muslim women</option>
+        <option value="2">Enforce hijab for all women</option>
+      </select>
+    </div>
+
+    <div class="question">
+      <label>Should foreign military bases be allowed in Syria?</label><br>
+      <select name="sovereignty1">
+        <option value="2">Never — violates sovereignty</option>
+        <option value="1">Only under Syrian control</option>
+        <option value="-1">Allowed for strategic allies</option>
+        <option value="-2">Yes — if it improves security or economy</option>
+      </select>
+    </div>
+
+    <button type="button" onclick="calculateResults()">Submit</button>
+  </form>
+
+  <canvas id="resultsChart" width="400" height="200" style="display:none;"></canvas>
+
+  <script src="quiz.js"></script>
+</body>
+</html>
