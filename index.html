@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Syrian Political Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Syrian Political Quiz</h1>
+
+  <form id="quiz-form">
+
+    <div class="question" data-axis="religion">
+      <p><strong>How strict should enforcement of modest attire be?</strong></p>
+      <label><input type="radio" name="religion1" value="-1"> Relaxed (e.g. Europe, the US, Japan)</label>
+      <label><input type="radio" name="religion1" value="0"> Moderate: modest clothing, no hijab enforcement (e.g. Qatar)</label>
+      <label><input type="radio" name="religion1" value="1"> Strict: enforcement of hijab (e.g. Iran, Afghanistan)</label>
+    </div>
+
+    <div class="question" data-axis="religion">
+      <p><strong>Should public schools and universities be gender-segregated?</strong></p>
+      <label><input type="radio" name="religion2" value="-1"> Relaxed: No segregation whatsoever</label>
+      <label><input type="radio" name="religion2" value="0"> Moderate: Segregation in secondary education only</label>
+      <label><input type="radio" name="religion2" value="1"> Strict: Segregation in all education levels</label>
+    </div>
+
+    <div class="question" data-axis="religion">
+      <p><strong>Should liquor stores be permitted in non-Muslim neighborhoods?</strong></p>
+      <label><input type="radio" name="religion3" value="-1"> Relaxed: permitted everywhere</label>
+      <label><input type="radio" name="religion3" value="0"> Moderate: only in non-Muslim neighborhoods</label>
+      <label><input type="radio" name="religion3" value="1"> Strict: not permitted anywhere</label>
+    </div>
+
+    <div class="question" data-axis="religion">
+      <p><strong>Should religion be taught in public schools?</strong></p>
+      <label><input type="radio" name="religion4" value="-1"> Relaxed: taught only at home</label>
+      <label><input type="radio" name="religion4" value="0"> Moderate: Islamic/Christian studies by faith</label>
+      <label><input type="radio" name="religion4" value="1"> Strict: all must learn Islamic studies</label>
+    </div>
+
+    <div class="question" data-axis="religion">
+      <p><strong>Should religious proselytizing require a government permit?</strong></p>
+      <label><input type="radio" name="religion5" value="-1"> Relaxed: no permit, full right</label>
+      <label><input type="radio" name="religion5" value="0"> Moderate: permit, allowed broadly</label>
+      <label><input type="radio" name="religion5" value="1"> Strict: permit + restricted in minority areas</label>
+    </div>
+
+    <div class="question" data-axis="religion">
+      <p><strong>Should religion be immune from critique and criticism?</strong></p>
+      <label><input type="radio" name="religion6" value="-1"> Relaxed: critique and ridicule allowed</label>
+      <label><input type="radio" name="religion6" value="0"> Moderate: no ridicule, but critique allowed</label>
+      <label><input type="radio" name="religion6" value="1"> Strict: no criticism of any kind allowed</label>
+    </div>
+
+    <button type="button" onclick="calculateResults()">Submit</button>
+  </form>
+
+  <div id="gauge-wrapper">
+    <div id="gauge-labels">
+      <span>Secular</span>
+      <span>Religious</span>
+    </div>
+    <div id="gauge-bar">
+      <div id="gauge-fill-left"></div>
+      <div id="gauge-fill-right"></div>
+    </div>
+  </div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>

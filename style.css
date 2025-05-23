@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+h1 {
+  color: #222;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.question {
+  margin-bottom: 30px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.question p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  font-size: 16px;
+  background-color: #377eb8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2c5a96;
+}
+
+#gauge-wrapper {
+  margin-top: 40px;
+  display: none;
+}
+
+#gauge-labels {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+#gauge-bar {
+  position: relative;
+  background: #eee;
+  height: 30px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#gauge-fill-left,
+#gauge-fill-right {
+  height: 100%;
+  float: left;
+  transition: width 0.5s ease-in-out;
+}
+
+#gauge-fill-left {
+  background: #377eb8;
+}
+
+#gauge-fill-right {
+  background: #d9534f;
+}
