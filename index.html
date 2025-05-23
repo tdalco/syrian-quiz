@@ -47,4 +47,27 @@
     </div>
 
     <div class="question">
-      <label>Should
+      <label>Should religious proselytizing require a government permit?</label><br>
+      <select name="religion5" data-axis="religion">
+        <option value="-1">Relaxed: no permit required, full public right</option>
+        <option value="0">Moderate: permit required, allowed in most public spaces</option>
+        <option value="1">Strict: permit required, restricted in minority neighborhoods</option>
+      </select>
+    </div>
+
+    <div class="question">
+      <label>Should religion be immune from critique and criticism?</label><br>
+      <select name="religion6" data-axis="religion">
+        <option value="-1">Relaxed: no idea is immune from ridicule (e.g. Germany)</option>
+        <option value="0">Moderate: immune from ridicule, but critique allowed academically</option>
+        <option value="1">Strict: completely immune from all criticism</option>
+      </select>
+    </div>
+
+    <button type="button" onclick="calculateResults()">Submit</button>
+  </form>
+
+  <canvas id="resultsChart" width="400" height="200" style="display:none;"></canvas>
+  <script src="quiz.js"></script>
+</body>
+</html>
