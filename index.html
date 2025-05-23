@@ -8,33 +8,43 @@
 </head>
 <body>
   <h1>Syrian Political Quiz</h1>
-
   <form id="quiz-form">
+
     <div class="question">
-      <label>How strict should modest attire enforcement be?</label><br>
-      <select name="religion1">
-        <option value="-2">Only basic modesty (e.g., no shorts)</option>
-        <option value="-1">Encourage hijab, don't enforce</option>
-        <option value="1">Enforce hijab for Muslim women</option>
-        <option value="2">Enforce hijab for all women</option>
+      <label>How strict should enforcement of modest attire be?</label><br>
+      <select name="religion1" data-axis="religion">
+        <option value="-1">Relaxed (e.g. Europe, the US, Japan)</option>
+        <option value="0">Moderate: modest clothing, no hijab enforcement (e.g. Qatar)</option>
+        <option value="1">Strict: enforcement of hijab (e.g. Iran, Afghanistan)</option>
       </select>
     </div>
 
     <div class="question">
-      <label>Should foreign military bases be allowed in Syria?</label><br>
-      <select name="sovereignty1">
-        <option value="2">Never — violates sovereignty</option>
-        <option value="1">Only under Syrian control</option>
-        <option value="-1">Allowed for strategic allies</option>
-        <option value="-2">Yes — if it improves security or economy</option>
+      <label>Should public schools and universities be gender-segregated?</label><br>
+      <select name="religion2" data-axis="religion">
+        <option value="-1">Relaxed: No segregation whatsoever</option>
+        <option value="0">Moderate: Segregation in secondary education only</option>
+        <option value="1">Strict: Segregation in all education levels</option>
       </select>
     </div>
 
-    <button type="button" onclick="calculateResults()">Submit</button>
-  </form>
+    <div class="question">
+      <label>Should liquor stores be permitted in non-Muslim neighborhoods?</label><br>
+      <select name="religion3" data-axis="religion">
+        <option value="-1">Relaxed: permitted everywhere</option>
+        <option value="0">Moderate: permitted only in non-Muslim neighborhoods</option>
+        <option value="1">Strict: not permitted anywhere</option>
+      </select>
+    </div>
 
-  <canvas id="resultsChart" width="400" height="200" style="display:none;"></canvas>
+    <div class="question">
+      <label>Should religion be taught in public schools?</label><br>
+      <select name="religion4" data-axis="religion">
+        <option value="-1">Relaxed: taught only at home</option>
+        <option value="0">Moderate: taught by faith (Islamic/Christian studies)</option>
+        <option value="1">Strict: all students must be taught Islamic studies</option>
+      </select>
+    </div>
 
-  <script src="quiz.js"></script>
-</body>
-</html>
+    <div class="question">
+      <label>Should
