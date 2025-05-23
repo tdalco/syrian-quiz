@@ -2,34 +2,47 @@ function calculateResults() {
   const form = document.getElementById('quiz-form');
   const formData = new FormData(form);
 
-  let axes = {
-    religion: 0,
-    sovereignty: 0
-  };
+  let axes = {};
 
-  axes.religion += parseInt(formData.get('religion1'));
-  axes.sovereignty += parseInt(formData.get('sovereignty1'));
+  // Gather scores per axis
+  form.querySelectorAll("select").forEach(select => {
+    const axis = select.getAttribute("data-axis");
+    const value = parseInt(formData.get(select.name));
 
-  // Normalize to 0–100 scale (–2 to 2 becomes 0 to 100)
-  const normalize = score => ((score + 2) / 4) * 100;
+    if (!axes[axis]) axes[axis] = 0;
+    axes[axis] += value;
+  });
 
-  const data = {
-    labels: ['Religious vs. Secular', 'Sovereignty vs. Strategic Realism'],
-    datasets: [{
-      label: 'Your Result',
-      data: [normalize(axes.religion), normalize(axes.sovereignty)],
-      backgroundColor: ['#a00', '#048']
-    }]
-  };
+  // Normalize scores to a 0–100 scale
+  const normalize = (score, totalQuestions) => ((score + totalQuestions) / (2 * totalQuestions)) * 100;
 
+  const labels = [];
+  const values = [];
+
+  for (let axis in axes) {
+    labels.push(axis.charAt(0).toUpperCase() + axis.slice(1));
+    values.push(normalize(axes[axis], 6));  // 6 questions for 'religion' axis
+  }
+
+  // Show the chart
   document.getElementById('resultsChart').style.display = 'block';
 
   new Chart(document.getElementById('resultsChart'), {
     type: 'bar',
-    data: data,
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Your Result',
+        data: values,
+        backgroundColor: '#377eb8'
+      }]
+    },
     options: {
       scales: {
-        y: { min: 0, max: 100 }
+        y: {
+          min: 0,
+          max: 100
+        }
       }
     }
   });
