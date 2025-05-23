@@ -4,29 +4,33 @@ function calculateResults() {
 
   let axes = {};
 
-  // Gather scores per axis
-  form.querySelectorAll("select").forEach(select => {
-    const axis = select.getAttribute("data-axis");
-    const value = parseInt(formData.get(select.name));
+  // Gather scores by reading selected radio inputs
+  form.querySelectorAll(".question").forEach(question => {
+    const axis = question.getAttribute("data-axis");
+    const name = question.querySelector("input[type=radio]").name;
+    const selected = formData.get(name);
+
+    if (!selected) return; // Skip unanswered
 
     if (!axes[axis]) axes[axis] = 0;
-    axes[axis] += value;
+    axes[axis] += parseInt(selected);
   });
 
-  // Normalize scores to a 0–100 scale
-  const normalize = (score, totalQuestions) => ((score + totalQuestions) / (2 * totalQuestions)) * 100;
+  // Normalize: -6 to +6 becomes 0–100
+  const normalize = (score, total) => ((score + total) / (2 * total)) * 100;
 
   const labels = [];
   const values = [];
 
   for (let axis in axes) {
     labels.push(axis.charAt(0).toUpperCase() + axis.slice(1));
-    values.push(normalize(axes[axis], 6));  // 6 questions for 'religion' axis
+    values.push(normalize(axes[axis], 6)); // 6 questions in religion axis
   }
 
-  // Show the chart
+  // Show chart canvas
   document.getElementById('resultsChart').style.display = 'block';
 
+  // Render horizontal bar chart
   new Chart(document.getElementById('resultsChart'), {
     type: 'bar',
     data: {
@@ -38,11 +42,31 @@ function calculateResults() {
       }]
     },
     options: {
+      indexAxis: 'y',
+      responsive: true,
       scales: {
-        y: {
+        x: {
           min: 0,
-          max: 100
+          max: 100,
+          grid: { display: false },
+          ticks: {
+            display: false // hide numeric values
+          },
+          title: {
+            display: true,
+            text: 'Secular ←——————————————————————→ Religious',
+            font: { size: 14 }
+          }
+        },
+        y: {
+          grid: { display: false },
+          ticks: {
+            font: { size: 16 }
+          }
         }
+      },
+      plugins: {
+        legend: { display: false }
       }
     }
   });
