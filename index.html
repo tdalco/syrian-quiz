@@ -1,73 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Syrian Political Quiz</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <h1>Syrian Political Quiz</h1>
-  <form id="quiz-form">
+<form id="quiz-form">
 
-    <div class="question">
-      <label>How strict should enforcement of modest attire be?</label><br>
-      <select name="religion1" data-axis="religion">
-        <option value="-1">Relaxed (e.g. Europe, the US, Japan)</option>
-        <option value="0">Moderate: modest clothing, no hijab enforcement (e.g. Qatar)</option>
-        <option value="1">Strict: enforcement of hijab (e.g. Iran, Afghanistan)</option>
-      </select>
-    </div>
+  <div class="question" data-axis="religion">
+    <p><strong>How strict should enforcement of modest attire be?</strong></p>
+    <label><input type="radio" name="religion1" value="-1"> Relaxed (e.g. Europe, the US, Japan)</label><br>
+    <label><input type="radio" name="religion1" value="0"> Moderate: modest clothing, no hijab enforcement (e.g. Qatar)</label><br>
+    <label><input type="radio" name="religion1" value="1"> Strict: enforcement of hijab (e.g. Iran, Afghanistan)</label>
+  </div>
 
-    <div class="question">
-      <label>Should public schools and universities be gender-segregated?</label><br>
-      <select name="religion2" data-axis="religion">
-        <option value="-1">Relaxed: No segregation whatsoever</option>
-        <option value="0">Moderate: Segregation in secondary education only</option>
-        <option value="1">Strict: Segregation in all education levels</option>
-      </select>
-    </div>
+  <div class="question" data-axis="religion">
+    <p><strong>Should public schools and universities be gender-segregated?</strong></p>
+    <label><input type="radio" name="religion2" value="-1"> Relaxed: No segregation whatsoever</label><br>
+    <label><input type="radio" name="religion2" value="0"> Moderate: Segregation in secondary education only</label><br>
+    <label><input type="radio" name="religion2" value="1"> Strict: Segregation in all education levels</label>
+  </div>
 
-    <div class="question">
-      <label>Should liquor stores be permitted in non-Muslim neighborhoods?</label><br>
-      <select name="religion3" data-axis="religion">
-        <option value="-1">Relaxed: permitted everywhere</option>
-        <option value="0">Moderate: permitted only in non-Muslim neighborhoods</option>
-        <option value="1">Strict: not permitted anywhere</option>
-      </select>
-    </div>
+  <div class="question" data-axis="religion">
+    <p><strong>Should liquor stores be permitted in non-Muslim neighborhoods?</strong></p>
+    <label><input type="radio" name="religion3" value="-1"> Relaxed: permitted everywhere</label><br>
+    <label><input type="radio" name="religion3" value="0"> Moderate: only in non-Muslim neighborhoods</label><br>
+    <label><input type="radio" name="religion3" value="1"> Strict: not permitted anywhere</label>
+  </div>
 
-    <div class="question">
-      <label>Should religion be taught in public schools?</label><br>
-      <select name="religion4" data-axis="religion">
-        <option value="-1">Relaxed: taught only at home</option>
-        <option value="0">Moderate: taught by faith (Islamic/Christian studies)</option>
-        <option value="1">Strict: all students must be taught Islamic studies</option>
-      </select>
-    </div>
+  <div class="question" data-axis="religion">
+    <p><strong>Should religion be taught in public schools?</strong></p>
+    <label><input type="radio" name="religion4" value="-1"> Relaxed: taught only at home</label><br>
+    <label><input type="radio" name="religion4" value="0"> Moderate: Islamic/Christian studies by faith</label><br>
+    <label><input type="radio" name="religion4" value="1"> Strict: all must learn Islamic studies</label>
+  </div>
 
-    <div class="question">
-      <label>Should religious proselytizing require a government permit?</label><br>
-      <select name="religion5" data-axis="religion">
-        <option value="-1">Relaxed: no permit required, full public right</option>
-        <option value="0">Moderate: permit required, allowed in most public spaces</option>
-        <option value="1">Strict: permit required, restricted in minority neighborhoods</option>
-      </select>
-    </div>
+  <div class="question" data-axis="religion">
+    <p><strong>Should religious proselytizing require a government permit?</strong></p>
+    <label><input type="radio" name="religion5" value="-1"> Relaxed: no permit, full right</label><br>
+    <label><input type="radio" name="religion5" value="0"> Moderate: permit, allowed broadly</label><br>
+    <label><input type="radio" name="religion5" value="1"> Strict: permit + restricted in minority areas</label>
+  </div>
 
-    <div class="question">
-      <label>Should religion be immune from critique and criticism?</label><br>
-      <select name="religion6" data-axis="religion">
-        <option value="-1">Relaxed: no idea is immune from ridicule (e.g. Germany)</option>
-        <option value="0">Moderate: immune from ridicule, but critique allowed academically</option>
-        <option value="1">Strict: completely immune from all criticism</option>
-      </select>
-    </div>
+  <div class="question" data-axis="religion">
+    <p><strong>Should religion be immune from critique and criticism?</strong></p>
+    <label><input type="radio" name="religion6" value="-1"> Relaxed: critique and ridicule allowed</label><br>
+    <label><input type="radio" name="religion6" value="0"> Moderate: no ridicule, but critique allowed</label><br>
+    <label><input type="radio" name="religion6" value="1"> Strict: no criticism of any kind allowed</label>
+  </div>
 
-    <button type="button" onclick="calculateResults()">Submit</button>
-  </form>
+  <button type="button" onclick="calculateResults()">Submit</button>
+</form>
 
-  <canvas id="resultsChart" width="400" height="200" style="display:none;"></canvas>
-  <script src="quiz.js"></script>
-</body>
-</html>
+<canvas id="resultsChart" width="400" height="200" style="display:none;"></canvas>
