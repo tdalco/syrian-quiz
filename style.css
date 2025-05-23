@@ -55,3 +55,39 @@ button:hover {
 canvas {
   margin-top: 40px;
 }
+
+/* === Gauge Styles === */
+#gauge-wrapper {
+  margin-top: 40px;
+  display: none;
+}
+
+#gauge-labels {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+#gauge-bar {
+  position: relative;
+  background: #eee;
+  height: 30px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#gauge-fill-left,
+#gauge-fill-right {
+  height: 100%;
+  float: left;
+  transition: width 0.5s ease-in-out;
+}
+
+#gauge-fill-left {
+  background: #377eb8; /* Left color (Secular side) */
+}
+
+#gauge-fill-right {
+  background: #d9534f; /* Right color (Religious side) */
+}
