@@ -86,3 +86,12 @@ button:hover {
 #gauge-fill-right {
   background: #d9534f;
 }
+
+#compassChart {
+  width: 400px;
+  height: 400px;
+  max-width: 100%;
+  max-height: 100%;
+  margin-top: 40px;
+  display: none;
+}
