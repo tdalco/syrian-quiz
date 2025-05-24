@@ -1,4 +1,5 @@
 function calculateResults() {
+  Chart.register(window['chartjs-plugin-annotation']);
   const form = document.getElementById('quiz-form');
   const formData = new FormData(form);
 
@@ -26,7 +27,7 @@ function calculateResults() {
   if (window.myCompassChart) {
     window.myCompassChart.destroy();
   }
-
+  
   window.myCompassChart = new Chart(chartEl, {
     type: 'scatter',
     data: {
