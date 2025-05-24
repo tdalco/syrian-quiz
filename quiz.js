@@ -46,12 +46,52 @@ function calculateResults() {
         legend: { display: false },
         annotation: {
           annotations: {
-            quadrant1: { type: 'box', xMin: 0, xMax: 1, yMin: 0, yMax: 1, backgroundColor: 'rgba(255, 99, 132, 0.1)' },
-            quadrant2: { type: 'box', xMin: -1, xMax: 0, yMin: 0, yMax: 1, backgroundColor: 'rgba(255, 205, 86, 0.1)' },
-            quadrant3: { type: 'box', xMin: -1, xMax: 0, yMin: -1, yMax: 0, backgroundColor: 'rgba(75, 192, 192, 0.1)' },
-            quadrant4: { type: 'box', xMin: 0, xMax: 1, yMin: -1, yMax: 0, backgroundColor: 'rgba(54, 162, 235, 0.1)' },
-            centerX: { type: 'line', borderColor: 'black', borderWidth: 2, scaleID: 'x', value: 0 },
-            centerY: { type: 'line', borderColor: 'black', borderWidth: 2, scaleID: 'y', value: 0 }
+            quadrant1: {
+              type: 'box',
+              xMin: 0,
+              xMax: 1,
+              yMin: 0,
+              yMax: 1,
+              backgroundColor: 'rgba(255, 99, 132, 0.1)'
+            },
+            quadrant2: {
+              type: 'box',
+              xMin: -1,
+              xMax: 0,
+              yMin: 0,
+              yMax: 1,
+              backgroundColor: 'rgba(255, 205, 86, 0.1)'
+            },
+            quadrant3: {
+              type: 'box',
+              xMin: -1,
+              xMax: 0,
+              yMin: -1,
+              yMax: 0,
+              backgroundColor: 'rgba(75, 192, 192, 0.1)'
+            },
+            quadrant4: {
+              type: 'box',
+              xMin: 0,
+              xMax: 1,
+              yMin: -1,
+              yMax: 0,
+              backgroundColor: 'rgba(54, 162, 235, 0.1)'
+            },
+            centerX: {
+              type: 'line',
+              borderColor: 'black',
+              borderWidth: 2,
+              scaleID: 'x',
+              value: 0
+            },
+            centerY: {
+              type: 'line',
+              borderColor: 'black',
+              borderWidth: 2,
+              scaleID: 'y',
+              value: 0
+            }
           }
         }
       },
@@ -60,7 +100,10 @@ function calculateResults() {
           min: -1,
           max: 1,
           ticks: { display: false },
-          title: { display: true, text: 'Progressive ←→ Traditional' },
+          title: {
+            display: true,
+            text: 'Progressive ←→ Traditional'
+          },
           grid: {
             color: ctx => ctx.tick.value === 0 ? '#000' : '#ccc',
             lineWidth: ctx => ctx.tick.value === 0 ? 2 : 1
@@ -70,7 +113,10 @@ function calculateResults() {
           min: -1,
           max: 1,
           ticks: { display: false },
-          title: { display: true, text: 'Individualist ↑↓ Statist' },
+          title: {
+            display: true,
+            text: 'Individualist ↑↓ Statist'
+          },
           grid: {
             color: ctx => ctx.tick.value === 0 ? '#000' : '#ccc',
             lineWidth: ctx => ctx.tick.value === 0 ? 2 : 1
