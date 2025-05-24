@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>البوصلة السياسية السورية</title>
+    <style>
+        body {
+            direction: rtl;
+            text-align: right;
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 30px;
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .question p {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+            background-color: #377eb8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2c5a96;
+        }
+
+        #chart-wrapper {
+            width: 400px;
+            height: 400px;
+            max-width: 100%;
+            margin-top: 40px;
+            display: none;
+            position: relative;
+        }
+
+        #compassChart {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>البوصلة السياسية السورية</h1>
+    <form id="quiz-form">
+        <div class="question" data-axis="tradition">
+            <p><strong>ما مدى الصرامة التي تفضلها في تطبيق قواعد اللباس المحتشم؟</strong></p>
+            <label><input type="radio" name="q1" value="-1">تطبيق مرن – مثلما هو الحال في الولايات المتحدة، أوروبا،
+                واليابان</label>
+            <label><input type="radio" name="q1" value="1">تطبيق متوسط – يجب فرض تغطية الجسد من الكتفين إلى الركبتين
+                (مثل
+                قطر)</label>
+            <label><input type="radio" name="q1" value="4">تطبيق صارم – يجب فرض الالتزام الكامل بالزي الشرعي، بما في ذلك
+                الحجاب</label>
+        </div>
+        <div class="question" data-axis="tradition">
+            <p><strong>هل ينبغي أن تكون المدارس والجامعات الحكومية مفصولة بين الجنسين؟</strong></p>
+            <label><input type="radio" name="q2" value="-3">لا يجب الفصل بين الجنسين في أي من مراحل التعليم</label>
+            <label><input type="radio" name="q2" value="0">يجب أن يكون هناك فصل في المراحل الاعدادية أو الثانوية فقط،
+                دون
+                الجامعات</label>
+            <label><input type="radio" name="q2" value="3">نعم، يجب أن يكون هناك فصل بين الجنسين في جميع
+                المراحل التعليمية</label>
+        </div>
+        <div class="question" data-axis="tradition">
+            <p><strong>هل ينبغي السماح ببيع المشروبات الكحولية و افتتاح محلات بيع الكحول (الخمارات)؟</strong></p>
+            <label><input type="radio" name="q3" value="-3">نعم، يجب السماح بذلك في مجمل أنحاء سوريا بعد الحصول على
+                الترخيص
+                اللازم</label>
+            <label><input type="radio" name="q3" value="0">يجب السماح لمحلات الكحول بالعمل فقط في الأحياء الغير
+                مسلمة</label>
+            <label><input type="radio" name="q3" value="3">لا، يجب عدم السماح لمحلات الكحول بالعمل في
+                أي مكان في سوريا</label>
+        </div>
+        <div class="question" data-axis="statism">
+            <p><strong>هل ينبغي أن تملك الشرطة صلاحية للاستجواب والتحقيق في علاقة رجل وامرأة يتواجدان معًا في الأماكن
+                    العامة؟</strong></p>
+            <label><input type="radio" name="q4" value="-1">لا، فذلك يُعد انتهاكًا للحقوق الفردية</label>
+            <label><input type="radio" name="q4" value="1">نعم، ولكن فقط في حال كان هناك تصرفات حميمية مثل مسك
+                الأيدي أو العناق</label>
+            <label><input type="radio" name="q4" value="3">نعم</label>
+        </div>
+        <div class="question" data-axis="statism">
+            <p><strong>هل يجب السماح بانتقاد الرئيس شخصيًا أو توجيه الإهانات أو الشتائم له؟</strong></p>
+            <label><input type="radio" name="q5" value="-2">نعم، طالما لا توجد تهديدات بالعنف</label>
+            <label><input type="radio" name="q5" value="0">يجب السماح بالانتقاد، لكن لا ينبغي السماح بالإهانات أو
+                الشتائم
+                الموجهة لشخص الرئيس</label>
+            <label><input type="radio" name="q5" value="4">يجب مقاضاة أي انتقاد ما لم يكن مبنيًا على أدلة قاطعة</label>
+        </div>
+        <div class="question" data-axis="statism">
+            <p><strong>هل ينبغي إزالة كلمة "العربية" من الاسم الرسمي الحالي للبلاد، الجمهورية العربية السورية؟</strong>
+            </p>
+            <label><input type="radio" name="q6" value="-2">نعم، إنها خطوة جيدة لعكس التنوع الطائفي في البلاد</label>
+            <label><input type="radio" name="q6" value="0">لا يهمني الأمر سواء تم التغيير أو لا</label>
+            <label><input type="radio" name="q6" value="2">لا، يجب الحفاظ على الهوية العربية لسوريا
+                وتعزيزها، لا تقليصها</label>
+        </div>
+        <div class="question" data-axis="tradition">
+            <p><strong>هل ينبغي على سوريا تطبيع العلاقات الدبلوماسية مع إسرائيل؟</strong></p>
+            <label><input type="radio" name="q7" value="-2.5">نعم، لقد حان الوقت لتجاوز حربنا الطويلة مع إسرائيل و التركيز
+                على
+                الداخل</label>
+            <label><input type="radio" name="q7" value="1">لا، لكن يجب السعي لتحقيق سلام أو هدنة حيثما نركز على إعادة
+                بناء
+                البلاد</label>
+            <label><input type="radio" name="q7" value="3">لا، المهادنة أو تطبيع العلاقات مع إسرائيل يُعد تنازلاً عن
+                واجبنا تجاه فلسطين</label>
+        </div>
+        <div class="question" data-axis="statism">
+            <p><strong>هل ينبغي إلغاء الخدمة العسكرية الإلزامية؟</strong></p>
+            <label><input type="radio" name="q8" value="-1">نعم، فلا ينبغي إجبار أي شخص على الخدمة ضد إرادته</label>
+            <label><input type="radio" name="q8" value="0">لا، ولكن يجب توفير أشكال بديلة من الخدمة الوطنية لمن لا يرغب
+                في
+                الخدمة العسكرية (مثل الخدمة في المستشفيات، التعليم، أو الإغاثة)</label>
+            <label><input type="radio" name="q8" value="3">لا، فالخدمة العسكرية أساسية لحفظ أمن البلاد</label>
+        </div>
+        <div class="question" data-axis="statism">
+            <p><strong>إلى أي مدى ينبغي على سوريا السعي لعقد صفقات وتحالفات عسكرية؟</strong></p>
+            <label><input type="radio" name="q9" value="0">أي صفقات أو تحالفات عسكرية في الوقت الحالي ستؤدي إلى
+                المساس بسيادة
+                سوريا، لذلك يجب الحذر منها</label>
+            <label><input type="radio" name="q9" value="1">يجب أن نسعى لعقد صفقات وتحالفات عسكرية، ولكن دون السماح
+                بإنشاء
+                قواعد عسكرية على الأراضي السورية</label>
+            <label><input type="radio" name="q9" value="1">التحالفات العسكرية ضرورية و يجب أن تكون من أولوياتنا حتى لو
+                كان ذلك
+                عن طريق إنشاء قواعد عسكرية أجنبية في البلاد</label>
+        </div>
+        <div class="question" data-axis="tradition">
+            <p><strong>هل ينبغي السماح للمقاتلين الأجانب بالتقديم للحصول على الجنسية السورية؟</strong></p>
+            <label><input type="radio" name="q10" value="-1">لا، ويجب على جميع الأجانب مغادرة سوريا</label>
+            <label><input type="radio" name="q10" value="0">لا، على الأقل حتى نحصل على موافقة من الدول الغربية على
+                ذلك</label>
+            <label><input type="radio" name="q10" value="2">نعم، طالما أنهم لم يرتكبوا أي جرم أو شر</label>
+        </div>
+        <div class="question" data-axis="tradition">
+            <p><strong>هل ينبغي أن تكون الأديان محصنة ضد النقد والانتقاد؟</strong></p>
+            <label><input type="radio" name="q11" value="-4">لا، فلا ينبغي لأي فكرة أن تكون محصنة من النقد أو السخرية،
+                ما دام
+                ذلك لا يخلّ بالسلم العام</label>
+            <label><input type="radio" name="q11" value="-1">يُسمح بالنقد ما دام محترمًا وأكاديميًا، ولكن السخرية خط
+                أحمر</label>
+            <label><input type="radio" name="q11" value="2">نعم، فلا يجوز التشكيك في الدين، و بالتأكيد لا يجوز
+                الانتقاد أو السخرية منه</label>
+        </div>
+        <div class="question" data-axis="tradition">
+            <p><strong>هل ينبغي السماح بالتبشير و الدعوة الدينية في الأماكن العامة؟</strong></p>
+            <label><input type="radio" name="q12" value="-1">لا، فالتبشير غالبًا ما يسبب اضطرابات في السلم العام</label>
+            <label><input type="radio" name="q12" value="-1">نعم، ولكن فقط بتصريح رسمي، وفي أحياء لا تضم أقليات دينية
+                (لا يُسمح
+                للمسلمين بالتبشير في الأحياء المسيحية والعكس صحيح)</label>
+            <label><input type="radio" name="q12" value="1">نعم، فالتبشير و الدعوة حقوق تقع تحت
+                مظلة حرية التعبير</label>
+        </div>
+        <div class="question" data-axis="tradition">
+            <p><strong>هل ينبغي أن يستند حكم القانون إلى الشريعة الإسلامية؟</strong></p>
+            <label><input type="radio" name="q13" value="-3">لا، فالحكم بالشريعة لا يتماشى مع متطلبات مجتمعنا في هذا
+                العصر</label>
+            <label><input type="radio" name="q13" value="1">نعم، ولكن في المسائل المدنية فقط (مثل تحديد الإرث)</label>
+            <label><input type="radio" name="q13" value="4">نعم، يجب أن تستند قوانيننا المدنية والجنائية إلى الشريعة،
+                حتى وإن
+                شمل ذلك تطبيق حدود مثل قطع اليد</label>
+        </div>
+        <div class="question" data-axis="statism">
+            <p><strong>هل ينبغي أن يكون للمدنيين الحق في امتلاك الأسلحة النارية؟</strong></p>
+            <label><input type="radio" name="q14" value="2">لا، فحفظ الأمن من مسؤولية الدولة، وليس المواطنين</label>
+            <label><input type="radio" name="q14" value="-2">لربما مستقبلاً، لكن ليس في الوقت الحالي، فالوضع في البلاد لا
+                يزال
+                مضطربًا وفوضويًا</label>
+            <label><input type="radio" name="q14" value="-4">نعم، فلا يمكن الوثوق بالحكومة لحمايتنا</label>
+        </div>
+        <div class="question" data-axis="statism">
+            <p><strong>كجزء من جهود حفظ السلام والمصالحة الوطنية، هل ينبغي السماح لقسد و غيرها من الميليشيات بأن تكون
+                    جزءً من
+                    الجيش الرسمي؟</strong></p>
+            <label><input type="radio" name="q15" value="-0.5">نعم، فالمصالحة الوطنية أولوية قصوى</label>
+            <label><input type="radio" name="q15" value="0">نعم، ولكن يجب حل هذه الميليشيات ودمج أفرادها بشكل فردي و
+                تدريجي
+                ضمن الجيش النظامي</label>
+            <label><input type="radio" name="q15" value="0.5">لا، يجب حل هذه الميليشيات ولا يجوز أن تكون جزءً من الجيش
+                السوري تحت أي ظرف</label>
+        </div>
+        <div class="question" data-axis="statism">
+            <p><strong>هل ينبغي أن يكون في المناطق الغير ناطقة بالعربية مدارس وجامعات حكومية تُدرّس بلغاتها المحلية إلى
+                    جانب
+                    اللغة العربية؟</strong></p>
+            <label><input type="radio" name="q16" value="-3">نعم، فذلك سيكون خطوة جيدة لتعزيز المودة في البلاد</label>
+            <label><input type="radio" name="q16" value="-1">في المستقبل البعيد نعم، لكن ذلك غير ممكن من الناحيتين
+                اللوجستية و
+                الاقتصادية في الوقت الراهن</label>
+            <label><input type="radio" name="q16" value="1">لا، فلا ينبغي أن تُستخدم الضرائب العامة لتمويل التدريس بهذه
+                اللغات الإقليمية</label>
+        </div>
+        <div class="question" data-axis="tradition">
+            <p><strong>هل ينبغي أن يُسمح لرجل وامرأة بالعيش معًا إذا لم يكونا متزوجين أو تربطهما صلة قرابة؟</strong></p>
+            <label><input type="radio" name="q17" value="-2">نعم، فليس من شأن الحكومة التدخل في مثل هذه الأمور
+                الشخصية</label>
+            <label><input type="radio" name="q17" value="1">لا، وتكون العقوبة في المرة الأولى إنذارًا أو غرامة، وفي حال
+                التكرار تُفرض عقوبة بالسجن</label>
+            <label><input type="radio" name="q17" value="3">لا، وهذا جرم كبير ويجب معاقبتهم بشكل صارم
+                ليكونوا عبرة للآخرين</label>
+        </div>
+    </form>
+
+    <button type="button" onclick="calculateResults()">ارسل</button>
+
+    <div id="chart-wrapper">
+        <canvas id="compassChart"></canvas>
+    </div>
+
+    <div id="result-description" style="margin-top: 30px; font-size: 18px; font-weight: bold;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.1.0/dist/chartjs-plugin-annotation.umd.min.js"></script>
+
+    <script>
+        Chart.register(window['chartjs-plugin-annotation']);
+
+        function calculateResults() {
+            const form = document.getElementById('quiz-form');
+            const questions = form.querySelectorAll(".question");
+
+            let axes = { tradition: 0, statism: 0 };
+            let maxScores = { tradition: 0, statism: 0 };
+            let totalAnswered = 0;
+
+            questions.forEach(question => {
+                const axis = question.getAttribute("data-axis");
+                const selected = question.querySelector("input[type='radio']:checked");
+
+                if (selected) {
+                    const value = parseFloat(selected.value);
+                    axes[axis] += value;
+                    totalAnswered++;
+
+                    // Determine the max possible absolute value for this question
+                    const values = Array.from(question.querySelectorAll("input[type='radio']")).map(r => Math.abs(parseFloat(r.value)));
+                    const maxAbsValue = Math.max(...values);
+                    maxScores[axis] += maxAbsValue;
+                }
+            });
+
+            if (totalAnswered < 17) {
+                alert("يرجى الإجابة على جميع الأسئلة قبل الإرسال.");
+                return;
+            }
+
+            // Normalize
+            const x = axes.tradition / maxScores.tradition;
+            const y = axes.statism / maxScores.statism;
+
+            const chartEl = document.getElementById('compassChart').getContext('2d');
+            document.getElementById('chart-wrapper').style.display = 'block';
+
+            if (window.myCompassChart) {
+                window.myCompassChart.destroy();
+            }
+
+            window.myCompassChart = new Chart(chartEl, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'موقعك',
+                        data: [{ x: x, y: y }],
+                        backgroundColor: '#377eb8',
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                        // annotation block goes here if needed
+                    },
+                    scales: {
+                        x: {
+                            min: -1,
+                            max: 1,
+                            ticks: { display: false },
+                            title: { display: true, text: 'تقليدي →← تقدمي' },
+                            grid: {
+                                color: ctx => ctx.tick.value === 0 ? '#000' : '#ccc',
+                                lineWidth: ctx => ctx.tick.value === 0 ? 2 : 1
+                            }
+                        },
+                        y: {
+                            min: -1,
+                            max: 1,
+                            ticks: { display: false },
+                            title: { display: true, text: 'سلطوي →← فردي' },
+                            grid: {
+                                color: ctx => ctx.tick.value === 0 ? '#000' : '#ccc',
+                                lineWidth: ctx => ctx.tick.value === 0 ? 2 : 1
+                            }
+                        }
+                    }
+                }
+            })
+
+            // Personality classification block goes here ↓↓↓↓↓
+            let label = '';
+            let description = '';
+
+            if (x > 0.15 && y > 0.15) {
+                label = 'المحافظ الصارم';
+                description = 'ترى في التقاليد حجر الأساس للاستقرار، وتؤمن أن السلطة القوية ضرورية لضبط المجتمع وتماسكه.';
+            } else if (x < -0.15 && y > 0.15) {
+                label = 'المُصلِح الحازم';
+                description = 'تؤمن بسلطة الدولة لكنك تتبنى مواقف اجتماعية أكثر تحررًا وتقدمية.';
+            } else if (x < -0.15 && y < -0.15) {
+                label = 'الليبرالي التحرري';
+                description = 'تُقدّس الحرية الفردية وتنادي بفصل الدين عن الدولة وتحرير المجتمع من القيود التقليدية.';
+            } else if (x > 0.15 && y < -0.15) {
+                label = 'المحافظ المتسامح';
+                description = 'تحترم العادات والتقاليد، ولكنك ترى أن تطبيقها يجب أن يكون خيارًا شخصيًا، لا إجباريًا.';
+            } else if (Math.abs(x) <= 0.15 && y > 0.15) {
+                label = 'السلطوي العقلاني';
+                description = 'تؤمن بسلطة الدولة كأداة للحفاظ على النظام، دون أن تتبنى توجهات اجتماعية متشددة.';
+            } else if (Math.abs(x) <= 0.15 && y < -0.15) {
+                label = 'الفرداني المتزن';
+                description = 'تدافع عن الحريات الفردية وترى أن دور الدولة يجب أن يكون محدودًا.';
+            } else if (x > 0.15 && Math.abs(y) <= 0.15) {
+                label = 'المحافظ الهادئ';
+                description = 'متمسك بالعادات الاجتماعية، دون الميل إلى فرضها بالقوة أو عبر السلطة.';
+            } else if (x < -0.15 && Math.abs(y) <= 0.15) {
+                label = 'الثائر الاجتماعي';
+                description = 'تدافع عن التغيير الاجتماعي والحقوق الفردية دون انشغال كبير بمسألة السلطة.';
+            } else {
+                label = 'الوسطي البراغماتي';
+                description = 'تميل إلى التوازن والاعتدال، وتختار مواقفك حسب السياق لا حسب الأيديولوجيا.';
+            }
+
+            // Output to the page
+            document.getElementById('result-description').innerHTML = `شخصيتك السياسية هي: <span style="color:#377eb8">${label}</span><br>${description}`;
+
+            ;
+        }
+
+
+    </script>
+</body>
+
+</html>
