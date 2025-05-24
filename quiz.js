@@ -30,14 +30,12 @@ function calculateResults() {
   window.myCompassChart = new Chart(chartEl, {
     type: 'scatter',
     data: {
-      datasets: [
-        {
-          label: 'Your Position',
-          data: [{ x: x, y: y }],
-          backgroundColor: '#377eb8',
-          pointRadius: 6
-        }
-      ]
+      datasets: [{
+        label: 'Your Position',
+        data: [{ x: x, y: y }],
+        backgroundColor: '#377eb8',
+        pointRadius: 6
+      }]
     },
     options: {
       responsive: true,
@@ -46,14 +44,46 @@ function calculateResults() {
         legend: { display: false },
         annotation: {
           annotations: {
-            centerLines: {
+            quadrant1: {
+              type: 'box',
+              xMin: 0,
+              xMax: 1,
+              yMin: 0,
+              yMax: 1,
+              backgroundColor: 'rgba(255, 99, 132, 0.1)' // top-right (Traditional + Statist)
+            },
+            quadrant2: {
+              type: 'box',
+              xMin: -1,
+              xMax: 0,
+              yMin: 0,
+              yMax: 1,
+              backgroundColor: 'rgba(255, 205, 86, 0.1)' // top-left (Progressive + Statist)
+            },
+            quadrant3: {
+              type: 'box',
+              xMin: -1,
+              xMax: 0,
+              yMin: -1,
+              yMax: 0,
+              backgroundColor: 'rgba(75, 192, 192, 0.1)' // bottom-left (Progressive + Individualist)
+            },
+            quadrant4: {
+              type: 'box',
+              xMin: 0,
+              xMax: 1,
+              yMin: -1,
+              yMax: 0,
+              backgroundColor: 'rgba(54, 162, 235, 0.1)' // bottom-right (Traditional + Individualist)
+            },
+            centerX: {
               type: 'line',
               borderColor: 'black',
               borderWidth: 2,
               scaleID: 'x',
               value: 0
             },
-            midlineY: {
+            centerY: {
               type: 'line',
               borderColor: 'black',
               borderWidth: 2,
@@ -67,13 +97,8 @@ function calculateResults() {
         x: {
           min: -1,
           max: 1,
-          ticks: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: 'Progressive ←→ Traditional'
-          },
+          ticks: { display: false },
+          title: { display: true, text: 'Progressive ←→ Traditional' },
           grid: {
             color: ctx => ctx.tick.value === 0 ? '#000' : '#ccc',
             lineWidth: ctx => ctx.tick.value === 0 ? 2 : 1
@@ -82,13 +107,8 @@ function calculateResults() {
         y: {
           min: -1,
           max: 1,
-          ticks: {
-            display: false
-          },
-          title: {
-            display: true,
-            text: 'Individualist ↑↓ Statist'
-          },
+          ticks: { display: false },
+          title: { display: true, text: 'Individualist ↑↓ Statist' },
           grid: {
             color: ctx => ctx.tick.value === 0 ? '#000' : '#ccc',
             lineWidth: ctx => ctx.tick.value === 0 ? 2 : 1
