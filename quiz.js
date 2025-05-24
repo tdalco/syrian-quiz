@@ -1,4 +1,4 @@
-Chart.register(window['chartjs-plugin-annotation']);
+Chart.register(ChartAnnotation);
 console.log('Annotation plugin registered:', Chart.registry.plugins);
 
 function calculateResults() {
