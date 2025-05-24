@@ -30,33 +30,72 @@ function calculateResults() {
   window.myCompassChart = new Chart(chartEl, {
     type: 'scatter',
     data: {
-      datasets: [{
-        label: 'Your Position',
-        data: [{ x: x, y: y }],
-        backgroundColor: '#377eb8',
-        pointRadius: 6
-      }]
+      datasets: [
+        {
+          label: 'Your Position',
+          data: [{ x: x, y: y }],
+          backgroundColor: '#377eb8',
+          pointRadius: 6
+        }
+      ]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
-        legend: { display: false }
+        legend: { display: false },
+        annotation: {
+          annotations: {
+            centerLines: {
+              type: 'line',
+              borderColor: 'black',
+              borderWidth: 2,
+              scaleID: 'x',
+              value: 0
+            },
+            midlineY: {
+              type: 'line',
+              borderColor: 'black',
+              borderWidth: 2,
+              scaleID: 'y',
+              value: 0
+            }
+          }
+        }
       },
       scales: {
         x: {
           min: -1,
           max: 1,
-          title: { display: true, text: 'Progressive ←→ Traditional' },
-          ticks: { stepSize: 0.5 }
+          ticks: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Progressive ←→ Traditional'
+          },
+          grid: {
+            color: ctx => ctx.tick.value === 0 ? '#000' : '#ccc',
+            lineWidth: ctx => ctx.tick.value === 0 ? 2 : 1
+          }
         },
         y: {
           min: -1,
           max: 1,
-          title: { display: true, text: 'Individualist ↑↓ Statist' },
-          ticks: { stepSize: 0.5 }
+          ticks: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Individualist ↑↓ Statist'
+          },
+          grid: {
+            color: ctx => ctx.tick.value === 0 ? '#000' : '#ccc',
+            lineWidth: ctx => ctx.tick.value === 0 ? 2 : 1
+          }
         }
       }
-    }
+    },
+    plugins: [Chart.registry.getPlugin('annotation')]
   });
 }
