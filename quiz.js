@@ -1,5 +1,6 @@
+Chart.register(window['chartjs-plugin-annotation']);
+
 function calculateResults() {
-  Chart.register(window['chartjs-plugin-annotation']);
   const form = document.getElementById('quiz-form');
   const formData = new FormData(form);
 
@@ -27,7 +28,7 @@ function calculateResults() {
   if (window.myCompassChart) {
     window.myCompassChart.destroy();
   }
-  
+
   window.myCompassChart = new Chart(chartEl, {
     type: 'scatter',
     data: {
@@ -45,52 +46,12 @@ function calculateResults() {
         legend: { display: false },
         annotation: {
           annotations: {
-            quadrant1: {
-              type: 'box',
-              xMin: 0,
-              xMax: 1,
-              yMin: 0,
-              yMax: 1,
-              backgroundColor: 'rgba(255, 99, 132, 0.1)' // top-right (Traditional + Statist)
-            },
-            quadrant2: {
-              type: 'box',
-              xMin: -1,
-              xMax: 0,
-              yMin: 0,
-              yMax: 1,
-              backgroundColor: 'rgba(255, 205, 86, 0.1)' // top-left (Progressive + Statist)
-            },
-            quadrant3: {
-              type: 'box',
-              xMin: -1,
-              xMax: 0,
-              yMin: -1,
-              yMax: 0,
-              backgroundColor: 'rgba(75, 192, 192, 0.1)' // bottom-left (Progressive + Individualist)
-            },
-            quadrant4: {
-              type: 'box',
-              xMin: 0,
-              xMax: 1,
-              yMin: -1,
-              yMax: 0,
-              backgroundColor: 'rgba(54, 162, 235, 0.1)' // bottom-right (Traditional + Individualist)
-            },
-            centerX: {
-              type: 'line',
-              borderColor: 'black',
-              borderWidth: 2,
-              scaleID: 'x',
-              value: 0
-            },
-            centerY: {
-              type: 'line',
-              borderColor: 'black',
-              borderWidth: 2,
-              scaleID: 'y',
-              value: 0
-            }
+            quadrant1: { type: 'box', xMin: 0, xMax: 1, yMin: 0, yMax: 1, backgroundColor: 'rgba(255, 99, 132, 0.1)' },
+            quadrant2: { type: 'box', xMin: -1, xMax: 0, yMin: 0, yMax: 1, backgroundColor: 'rgba(255, 205, 86, 0.1)' },
+            quadrant3: { type: 'box', xMin: -1, xMax: 0, yMin: -1, yMax: 0, backgroundColor: 'rgba(75, 192, 192, 0.1)' },
+            quadrant4: { type: 'box', xMin: 0, xMax: 1, yMin: -1, yMax: 0, backgroundColor: 'rgba(54, 162, 235, 0.1)' },
+            centerX: { type: 'line', borderColor: 'black', borderWidth: 2, scaleID: 'x', value: 0 },
+            centerY: { type: 'line', borderColor: 'black', borderWidth: 2, scaleID: 'y', value: 0 }
           }
         }
       },
@@ -116,7 +77,6 @@ function calculateResults() {
           }
         }
       }
-    },
-    plugins: [Chart.registry.getPlugin('annotation')]
+    }
   });
 }

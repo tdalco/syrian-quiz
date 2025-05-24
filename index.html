@@ -4,18 +4,17 @@
   <meta charset="UTF-8">
   <title>Political Compass Quiz</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.1.0/dist/chartjs-plugin-annotation.min.js"></script>
 
+  <!-- Chart.js v4 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Annotation plugin for Chart.js v4 -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.1.0/dist/chartjs-plugin-annotation.umd.min.js"></script>
 </head>
-
-  
 <body>
-  
   <h1>Political Compass Quiz</h1>
 
   <form id="quiz-form">
-
     <div class="question" data-axis="tradition">
       <p><strong>Should religion be taught in public schools?</strong></p>
       <label><input type="radio" name="q1" value="-1"> No, religion belongs at home</label>
@@ -50,7 +49,7 @@
   <div id="chart-wrapper">
     <canvas id="compassChart"></canvas>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
+
   <script src="quiz.js"></script>
 </body>
 </html>
