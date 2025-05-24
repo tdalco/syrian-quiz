@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Political Compass Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <h1>Political Compass Quiz</h1>
+
+  <form id="quiz-form">
+
+    <div class="question" data-axis="tradition">
+      <p><strong>Should religion be taught in public schools?</strong></p>
+      <label><input type="radio" name="q1" value="-1"> No, religion belongs at home</label>
+      <label><input type="radio" name="q1" value="0"> Neutral / depends</label>
+      <label><input type="radio" name="q1" value="1"> Yes, it's important to teach religious values</label>
+    </div>
+
+    <div class="question" data-axis="tradition">
+      <p><strong>Should modest dress be legally enforced?</strong></p>
+      <label><input type="radio" name="q2" value="-1"> No, people should dress freely</label>
+      <label><input type="radio" name="q2" value="0"> Some standards should exist</label>
+      <label><input type="radio" name="q2" value="1"> Yes, modesty should be enforced</label>
+    </div>
+
+    <div class="question" data-axis="statism">
+      <p><strong>Should the government control key industries?</strong></p>
+      <label><input type="radio" name="q3" value="1"> Yes, it ensures fairness and access</label>
+      <label><input type="radio" name="q3" value="0"> A mix of both public and private</label>
+      <label><input type="radio" name="q3" value="-1"> No, private sector does it better</label>
+    </div>
+
+    <div class="question" data-axis="statism">
+      <p><strong>Should personal freedoms be limited for national security?</strong></p>
+      <label><input type="radio" name="q4" value="1"> Yes, national interest comes first</label>
+      <label><input type="radio" name="q4" value="0"> Only when absolutely necessary</label>
+      <label><input type="radio" name="q4" value="-1"> No, freedoms must be preserved</label>
+    </div>
+
+    <button type="button" onclick="calculateResults()">Submit</button>
+  </form>
+
+  <div id="chart-wrapper">
+    <canvas id="compassChart"></canvas>
+  </div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>
