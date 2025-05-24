@@ -1,4 +1,5 @@
 Chart.register(window['chartjs-plugin-annotation']);
+console.log('Annotation plugin registered:', Chart.registry.plugins);
 
 function calculateResults() {
   const form = document.getElementById('quiz-form');
