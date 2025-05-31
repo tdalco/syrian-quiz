@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>البوصلة السياسية السورية</title>
     <style>
@@ -73,6 +74,49 @@
             width: 100% !important;
             height: 100% !important;
         }
+
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Dark background */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            left: 15px;
+            top: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close-btn:hover {
+            color: black;
+        }
+
+        #chart-wrapper-modal {
+            width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 
@@ -134,7 +178,8 @@
         </div>
         <div class="question" data-axis="tradition">
             <p><strong>هل ينبغي على سوريا تطبيع العلاقات الدبلوماسية مع إسرائيل؟</strong></p>
-            <label><input type="radio" name="q7" value="-2.5">نعم، لقد حان الوقت لتجاوز حربنا الطويلة مع إسرائيل و التركيز
+            <label><input type="radio" name="q7" value="-2.5">نعم، لقد حان الوقت لتجاوز حربنا الطويلة مع إسرائيل و
+                التركيز
                 على
                 الداخل</label>
             <label><input type="radio" name="q7" value="1">لا، لكن يجب السعي لتحقيق سلام أو هدنة حيثما نركز على إعادة
@@ -201,7 +246,8 @@
         <div class="question" data-axis="statism">
             <p><strong>هل ينبغي أن يكون للمدنيين الحق في امتلاك الأسلحة النارية؟</strong></p>
             <label><input type="radio" name="q14" value="2">لا، فحفظ الأمن من مسؤولية الدولة، وليس المواطنين</label>
-            <label><input type="radio" name="q14" value="-2">لربما مستقبلاً، لكن ليس في الوقت الحالي، فالوضع في البلاد لا
+            <label><input type="radio" name="q14" value="-2">لربما مستقبلاً، لكن ليس في الوقت الحالي، فالوضع في البلاد
+                لا
                 يزال
                 مضطربًا وفوضويًا</label>
             <label><input type="radio" name="q14" value="-4">نعم، فلا يمكن الوثوق بالحكومة لحمايتنا</label>
@@ -240,12 +286,6 @@
     </form>
 
     <button type="button" onclick="calculateResults()">ارسل</button>
-
-    <div id="chart-wrapper">
-        <canvas id="compassChart"></canvas>
-    </div>
-
-    <div id="result-description" style="margin-top: 30px; font-size: 18px; font-weight: bold;"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script
@@ -288,7 +328,7 @@
             const y = axes.statism / maxScores.statism;
 
             const chartEl = document.getElementById('compassChart').getContext('2d');
-            document.getElementById('chart-wrapper').style.display = 'block';
+            document.getElementById('result-modal').style.display = 'block';
 
             if (window.myCompassChart) {
                 window.myCompassChart.destroy();
@@ -374,9 +414,24 @@
 
             ;
         }
+        function closeModal() {
+            document.getElementById('result-modal').style.display = 'none';
+        }
+
 
 
     </script>
+
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div id="chart-wrapper-modal" style="width: 100%; height: 300px;">
+                <canvas id="compassChart" width="400" height="400"></canvas>
+            </div>
+            <div id="result-description" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></div>
+        </div>
+    </div>
+
 </body>
 
 </html>
